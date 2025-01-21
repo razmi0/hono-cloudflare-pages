@@ -1,14 +1,15 @@
 name = "hono-cloudflare-pages"
 compatibility_date = "2025-01-21"
 pages_build_output_dir = "./dist"
-compatibility_flags = [ "nodejs_compat" ]
+compatibility_flags = ["nodejs_compat"]
 
-# [vars]
-# MY_VAR = "my-variable"
+[vars]
+NAME = "Hono"
 
-# [[kv_namespaces]]
-# binding = "MY_KV_NAMESPACE"
-# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+[[kv_namespaces]]
+binding = "KV"
+id = "c9dfc957b7a747a1962290c0e1f19311"
+
 
 # [[r2_buckets]]
 # binding = "MY_BUCKET"
