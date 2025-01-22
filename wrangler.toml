@@ -20,5 +20,11 @@ id = "c9dfc957b7a747a1962290c0e1f19311"
 # database_name = "my-database"
 # database_id = ""
 
+# [[d1_databases]]
+# binding = "DB" # i.e. available in your Worker on env.DB
+# database_name = "todo"
+# database_id = ""
+# preview_database_id = "local-todo"
+
 # [ai]
 # binding = "AI"
