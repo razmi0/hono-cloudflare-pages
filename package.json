@@ -8,7 +8,10 @@
         "deploy": "npm run build && wrangler pages deploy"
     },
     "dependencies": {
-        "hono": "^4.6.17"
+        "@hono/zod-validator": "^0.4.2",
+        "hono": "^4.6.17",
+        "htmx.org": "^2.0.4",
+        "zod": "^3.24.1"
     },
     "devDependencies": {
         "@cloudflare/workers-types": "^4.20241218.0",
