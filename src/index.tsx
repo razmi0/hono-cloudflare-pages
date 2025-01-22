@@ -5,7 +5,7 @@ import { renderer } from "./renderer";
 // local env bindings
 export type Bindings = {
     /**
-     * KVNamespace (Cloudflare Workers) give access to KV storage witch is a key-value store that can be used to store data in the cloud and access it from your workers.
+     * KVNamespace (Cloudflare Workers)
      * */
     KV: KVNamespace;
     /**
