@@ -32,7 +32,3 @@ export default new Hono<{ Bindings: Bindings }>()
             </body>
         );
     });
-// add a key-value pair to the KV store
-// await c.env.KV.put("name", c.env.NAME);
-// get the value of the key "name" from the KV store
-// const name = await c.env.KV.get("name");
