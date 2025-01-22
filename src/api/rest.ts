@@ -42,7 +42,7 @@ const todoRoute = new Hono<{ Bindings: Bindings }>()
         const todos = JSON.parse((await c.env.KV.get("todos")) || "[]");
         console.log(todos);
         if (todos.length === 0) {
-            c.env.KV.put("todos", JSON.stringify(fallbackTodos));
+            await c.env.KV.put("todos", JSON.stringify(fallbackTodos));
         }
         return c.json(todos ? todos : fallbackTodos, 200);
     })
@@ -63,13 +63,13 @@ const todoRoute = new Hono<{ Bindings: Bindings }>()
             completed,
         };
 
-        c.env.KV.put("todos", JSON.stringify([...todos, newTodo]));
+        await c.env.KV.put("todos", JSON.stringify([...todos, newTodo]));
         return c.json(newTodo, 201);
     })
     .put("/todos/update", zValidator("json", todoSchema), async (c) => {
         const { id, title, completed } = c.req.valid("json");
         const todos = JSON.parse((await c.env.KV.get("todos")) || "[]");
-        c.env.KV.put(
+        await c.env.KV.put(
             "todos",
             JSON.stringify(todos.map((todo: Todo) => (todo.id === id ? { id, title, completed } : todo)))
         );
@@ -78,7 +78,7 @@ const todoRoute = new Hono<{ Bindings: Bindings }>()
     .delete("/todos/delete", zValidator("json", todoSchema.pick({ id: true })), async (c) => {
         const { id } = c.req.valid("json");
         const todos = JSON.parse((await c.env.KV.get("todos")) || "[]");
-        c.env.KV.put("todos", JSON.stringify(todos.filter((todo: Todo) => todo.id !== id)));
+        await c.env.KV.put("todos", JSON.stringify(todos.filter((todo: Todo) => todo.id !== id)));
         return c.json({ id }, 200);
     });
 
