@@ -19,12 +19,17 @@ export default new Hono<{ Bindings: Bindings }>()
     .route("/api", api)
     .use("*", renderer("Hono"))
     .get("/", async (c) => {
+        const isConnectedToKV = c.env.KV ? "connected" : "not connected";
         return c.render(
-            <>
-                <h1>Server side rendered title</h1>
-                <small>KV var : {c.env.NAME}</small>
-                <div id="root"></div>
-            </>
+            <body class={"container-fluid"}>
+                <header>
+                    <h1>Server side rendered layout</h1>
+                    <small>KV : {isConnectedToKV}</small>
+                </header>
+                <main>
+                    <div id="root"></div>
+                </main>
+            </body>
         );
     });
 // add a key-value pair to the KV store

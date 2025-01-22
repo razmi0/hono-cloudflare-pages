@@ -115,32 +115,43 @@ export const ClientTodo = () => {
     };
 
     return (
-        <section class={"container"}>
-            <h1>Client renderer todo list</h1>
+        <article class={"container client-todo-ctn"}>
+            <header>
+                <h1>Client renderer todo list</h1>
+                <small>an island..</small>
+            </header>
             {error && <p aria-invalid="true">Something went wrong</p>}
             {todos.map(({ id, title, completed }: Todo) => (
-                <article role="group">
+                <article role="group" style={"padding : 0;"}>
                     <input
                         type={"checkbox"}
                         checked={completed}
                         onChange={(e) => handleCheckboxChange(id, e)}
                         style={"height : auto;"}
                     />
-                    <input type="text" placeholder={id + " : " + title} onInput={(e) => handleTitleChange(id, e)} />
-                    <button onClick={() => deleteTodo(id)}>Delete</button>
+                    <input
+                        type="text"
+                        placeholder={title}
+                        onInput={(e) => handleTitleChange(id, e)}
+                        class={"input-bold-content"}
+                    />
+                    <button onClick={() => deleteTodo(id)}>
+                        <span>Delete_{id}</span>
+                    </button>
                 </article>
             ))}
-            <hr />
-            <article role="group">
-                <input
-                    type="checkbox"
-                    name="completed"
-                    onChange={handleNewTodoCheckboxChange}
-                    style={"height : auto;"}
-                />
-                <input type="text" placeholder="Add todo" name="title" onInput={handleNewTodoTitleChange} />
-                <button onClick={() => addTodo({ ...newTodo })}>Add</button>
-            </article>
-        </section>
+            <footer>
+                <div role="group">
+                    <input
+                        type="checkbox"
+                        name="completed"
+                        onChange={handleNewTodoCheckboxChange}
+                        style={"height : auto;"}
+                    />
+                    <input type="text" placeholder="Add todo" name="title" onInput={handleNewTodoTitleChange} />
+                    <button onClick={() => addTodo({ ...newTodo })}>Add</button>
+                </div>
+            </footer>
+        </article>
     );
 };

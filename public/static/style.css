@@ -1,1 +1,17 @@
-h1 { font-family: Arial, Helvetica, sans-serif; }
+.client-todo-ctn {
+    border-radius: 1rem;
+    padding: 1rem;
+
+    .todo-id {
+    }
+}
+
+.input-bold-content {
+    font-weight: bold;
+    color: white;
+}
+
+.input-bold-content::placeholder {
+    font-weight: bold;
+    color: white;
+}
