@@ -75,7 +75,8 @@ const useTodos = (todoClient: (typeof client)["todos"]) => {
     return { todos, deleteTodo, updateTodo, addTodo, error };
 };
 
-const client = hc<TodoRoute>("http://localhost:5173/api");
+const dns = import.meta.env.PROD ? "https://hono-test2.pages.dev" : "http://localhost:5173";
+const client = hc<TodoRoute>(`${dns}/api`);
 /**
  * ClientTodo component
  */
