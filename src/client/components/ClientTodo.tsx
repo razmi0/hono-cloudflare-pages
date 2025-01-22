@@ -120,14 +120,24 @@ export const ClientTodo = () => {
             {error && <p aria-invalid="true">Something went wrong</p>}
             {todos.map(({ id, title, completed }: Todo) => (
                 <article role="group">
-                    <input type={"checkbox"} checked={completed} onChange={(e) => handleCheckboxChange(id, e)} />
+                    <input
+                        type={"checkbox"}
+                        checked={completed}
+                        onChange={(e) => handleCheckboxChange(id, e)}
+                        style={"height : auto;"}
+                    />
                     <input type="text" placeholder={id + " : " + title} onInput={(e) => handleTitleChange(id, e)} />
                     <button onClick={() => deleteTodo(id)}>Delete</button>
                 </article>
             ))}
             <hr />
             <article role="group">
-                <input type="checkbox" name="completed" onChange={handleNewTodoCheckboxChange} />
+                <input
+                    type="checkbox"
+                    name="completed"
+                    onChange={handleNewTodoCheckboxChange}
+                    style={"height : auto;"}
+                />
                 <input type="text" placeholder="Add todo" name="title" onInput={handleNewTodoTitleChange} />
                 <button onClick={() => addTodo({ ...newTodo })}>Add</button>
             </article>
